@@ -8,7 +8,7 @@ import sys
 terminal_log = "Client started\n"
 async def listen(uri):
     global terminal_log
-    client_id = sys.argv[0]
+    client_id = sys.argv[1]
     
     uri_with_id = uri if not client_id else f"{uri}?client_id={client_id}"
     while True:
