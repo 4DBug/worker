@@ -15,5 +15,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Downloading Dependencies
+      run: python -m pip install websockets
     - name: Starting Client
       run: ./client.py ${{ github.event.inputs.client }}
