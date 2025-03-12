@@ -4,11 +4,12 @@ import subprocess
 import websockets
 import os
 import sys
+import uuid
 
 terminal_log = "Client started\n"
 async def listen(uri):
     global terminal_log
-    client_id = sys.argv[1]
+    client_id = sys.argv[2] or uuid.uuid4()
     
     uri_with_id = uri if not client_id else f"{uri}?client_id={client_id}"
     while True:
@@ -54,5 +55,5 @@ async def listen(uri):
             await asyncio.sleep(5)
 
 if __name__ == '__main__':
-    uri = "ws://bug-host.tuns.sh/ws"
+    uri = f"ws://{sys.argv[1]}/ws"
     asyncio.get_event_loop().run_until_complete(listen(uri))
