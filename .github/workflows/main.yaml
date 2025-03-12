@@ -1,0 +1,14 @@
+name: Worker
+
+on:
+  repository_dispatch:
+    types: [start]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Starting Client
+      run: ./client.py
